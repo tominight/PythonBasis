@@ -33,27 +33,26 @@ def Plot3D():
     v.append(vectors.Vector3D(1, 0, 0, 'x axis')) #x axis 
     v.append(vectors.Vector3D(0, 1, 0, 'y axis')) #y axis
     v.append(vectors.Vector3D(0, 0, 1, 'z axis')) #z axis
-
     #perform rotations to find e, mu, tau. 
 
     matrix = np.zeros((3, 3))
     matrix[0,0] = 1
+    matrix[0,1] = 2
+    matrix[0,2] = 3
+    matrix[1,0] = 4
     matrix[1,1] = -1
     matrix[2,2] = -1
-    print(matrix)
+    #print(matrix)
 
     Param = PMNSDefine.MixingParams()
     matrix2 = Param.PMNS
 
-    #v.append(vectors.Vector3D(0.3, -0.4, -0.7, 'placeholder', plotaura=True))
-    #v.append(vectors.Vector3D(0, 0, 0, 'placeholder', plotaura=True)) #placeholder
-    #v.append(vectors.Vector3D(0, 0, 0, 'placeholder', plotaura=True)) #placeholder
+    v.append(vectors.Vector3D(0.3, -0.4, -0.7, 'placeholder', plotaura=True))
+    v.append(vectors.Vector3D(1, 1, 1, 'placeholder', plotaura=True)) #placeholder
+    v.append(vectors.Vector3D(0, 1, 0, 'placeholder', plotaura=True)) #placeholder
     #v[3].TransformX(matrix)
     #v[3].TransformY(matrix)
     #v[3].TransformZ(matrix)
-
-    v.append(copy.deepcopy(v[0]))  # TODO: Temp testing, remove.
-    v.append(copy.deepcopy(v[0]))
     print('v0 before ' + str(v[4].x) + ', ' + str(v[4].y) + ', ' + str(v[4].z))
     v[4].TransformX(matrix2)
     v[4].TransformY(matrix2)

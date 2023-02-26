@@ -35,9 +35,18 @@ def Plot3D():
 
     #perform rotations to find e, mu, tau. 
 
-    v.append(vectors.Vector3D(-0.6, 0.4, 0.3, 'placeholder', None, True)) #placeholder 
-    v.append(vectors.Vector3D(0.9, 0.5, 0.1, 'placeholder', None, True)) #placeholder
+    matrix = np.zeros((3, 3))
+    print(matrix)
+    matrix[0,0] = 1
+    matrix[1,1] = -1
+    matrix[2,2] = -1
+    print(matrix)
+
+    v.append(vectors.Vector3D(0.3, -0.4, -0.7, 'placeholder', plotaura=True))
     v.append(vectors.Vector3D(0.3, -0.4, -0.7, 'placeholder', plotaura=True)) #placeholder
+    v[3].TransformX(matrix)
+    v[3].TransformY(matrix)
+    v[3].TransformZ(matrix)
 
    # for j in range(9):
    #     v.append(vectors.Vector3D(j/10, j/10, j/10)) #placeholder TODO:FIX COLOUR ITERATION.

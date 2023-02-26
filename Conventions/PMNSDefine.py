@@ -22,7 +22,7 @@ class MixingParams:
         self.theta13 = theta13
     
 
-    def setPMNS(self):
+    def setPMNS(self): #Thanks Andres :) 
         # set abbreviations
         S12 = np.sin(self.theta12)
         S23 = np.sin(self.theta23)

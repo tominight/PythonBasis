@@ -1,5 +1,6 @@
 import matplotlib.pyplot as plt
 import numpy as np
+import math
 import copy
 from Conventions import PMNSDefine
 from Conventions import vectors
@@ -48,7 +49,7 @@ def Plot3D():
     matrix2 = Param.PMNS
 
     v.append(vectors.Vector3D(0.3, -0.4, -0.7, 'placeholder', plotaura=True))
-    v.append(vectors.Vector3D(1, 1, 1, 'placeholder', plotaura=True)) #placeholder
+    v.append(vectors.Vector3D(1, 0, 0, 'placeholder', plotaura=True)) #placeholder
     v.append(vectors.Vector3D(0, 1, 0, 'placeholder', plotaura=True)) #placeholder
     #v[3].TransformX(matrix)
     #v[3].TransformY(matrix)
@@ -58,6 +59,9 @@ def Plot3D():
     v[4].TransformY(matrix2)
     v[4].TransformZ(matrix2)
     print('v0 after ' + str(v[4].x) + ', ' + str(v[4].y) + ', ' + str(v[4].z))
+
+    magnitude = math.sqrt(v[4].x**2 + v[4].y**2 + v[4].z**2)
+    print(magnitude)  # should print 5.0
 
    # for j in range(9):
    #     v.append(vectors.Vector3D(j/10, j/10, j/10)) #placeholder TODO:FIX COLOUR ITERATION.

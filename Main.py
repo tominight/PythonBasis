@@ -46,7 +46,7 @@ def Plot3D():
     #plot vectors
     for i in range(len(v)):
         # Plot the vector as an arrow
-        ax.quiver(0, 0, 0, v[i].x, v[i].y, v[i].z, arrow_length_ratio=0.1, color=v[i].colour, label=f'vector {i}')
+        ax.quiver(0, 0, 0, v[i].x, v[i].y, v[i].z, arrow_length_ratio=0.1, color=v[i].colour, label=f'{v[i].name}')
         ax.text((v[i].x)*1.1, (v[i].y)*1.1, (v[i].z)*1.1, f'{v[i].name}', color=v[i].colour)
 
         # Plot lines to touch the x, y, and z planes

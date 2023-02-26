@@ -2,7 +2,7 @@ import numpy as np
 
 class MixingParams:
 
-    def __init__(self, inverted=0):  # L in Km and E in GeV
+    def __init__(self, inverted=0): 
         self.updatetheta()
         self.dcp = -1.601
 

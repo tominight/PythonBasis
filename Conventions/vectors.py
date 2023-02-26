@@ -28,7 +28,7 @@ class Vector3D:
         colour = next(colorlist)
         return colour
     
-    def TransformX(self, matrix):
+    def TransformX(self, matrix): #TODO add length catch here.
         x = matrix[0,0]*self.x + matrix[0,1]*self.y + matrix[0,2]*self.z
         self.UpdateCoordinates(x=x)
     

@@ -5,3 +5,5 @@ Packages needed:
 matplotlib
 matplotlib.cm
 numpy
+
+Some global TODOS: Move constant definitions to constants.py and access from there; Fix iteration colours issue and move elsewhere in case more vectors need to be plotted.

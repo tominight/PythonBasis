@@ -39,3 +39,25 @@ class Vector3D:
     def TransformZ(self, matrix):
         z = matrix[2,0]*self.x + matrix[2,1]*self.y + matrix[2,2]*self.z
         self.UpdateCoordinates(z=z)
+
+    def Transforme(self, matrix): #TODO add length catch here.
+        x = matrix[0,0]*self.x + matrix[1,0]*self.y + matrix[2,0]*self.z
+        self.UpdateCoordinates(x=x)
+
+    def Transformmu(self, matrix):
+        y = matrix[0,1]*self.x + matrix[1,1]*self.y + matrix[2,1]*self.z
+        self.UpdateCoordinates(y=y)
+
+    def Transformtau(self, matrix):
+        z = matrix[0,2]*self.x + matrix[1,2]*self.y + matrix[2,2]*self.z
+        self.UpdateCoordinates(z=z)
+
+
+    def Rotate(self, matrix):
+        # Apply rotation matrix to vector coordinates
+        rotated_x = matrix[0, 0] * self.x + matrix[0, 1] * self.y + matrix[0, 2] * self.z
+        rotated_y = matrix[1, 0] * self.x + matrix[1, 1] * self.y + matrix[1, 2] * self.z
+        rotated_z = matrix[2, 0] * self.x + matrix[2, 1] * self.y + matrix[2, 2] * self.z
+
+        # Update vector coordinates with rotated values
+        self.UpdateCoordinates(x=rotated_x, y=rotated_y, z=rotated_z)

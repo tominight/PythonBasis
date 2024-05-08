@@ -1,3 +1,5 @@
+import matplotlib
+matplotlib.use('TkAgg')
 import matplotlib.pyplot as plt
 import numpy as np
 import copy
@@ -5,7 +7,7 @@ from Conventions import PMNSDefine
 from Conventions import vectors
 
 def main():
-    #Params()
+    Params()
     #Plot2D()
     Plot3D()
     
@@ -15,7 +17,7 @@ def Params():
     Param = PMNSDefine.MixingParams()
 
     print(Param.theta12)
-    Param.updatetheta(theta12=0.5, theta13=0.6)
+    #Param.updatetheta(theta12=0.5, theta13=0.6)
     print(Param.theta12)
     print(Param.theta23)
     print(Param.theta13)
@@ -30,11 +32,35 @@ def Plot3D():
     # Define the vector components in a list
     v = []
 
-    v.append(vectors.Vector3D(1, 0, 0, 'x axis')) #x axis 
-    v.append(vectors.Vector3D(0, 1, 0, 'y axis')) #y axis
-    v.append(vectors.Vector3D(0, 0, 1, 'z axis')) #z axis
+    v.append(vectors.Vector3D(1, 0, 0, '$\\nu_1$')) #x axis
+    v.append(vectors.Vector3D(0, 1, 0, '$\\nu_2$')) #y axis
+    v.append(vectors.Vector3D(0, 0, 1, '$\\nu_3$')) #z axis
 
-    #perform rotations to find e, mu, tau. 
+    Param = PMNSDefine.MixingParams()
+    matrix2 = Param.PMNS
+    matrix3 = Param.PMNSConj
+    magnitude = (np.sign(np.real(matrix2)) * np.abs(matrix2))
+    conj_magnitude = (np.sign(np.real(matrix3)) * np.abs(matrix3))
+
+    print("PMNS")
+    print(matrix2)
+    print("Conjugate")
+    print(matrix3)
+    print("No Complex")
+    print(magnitude)
+    print("No Complex Conjugate")
+    print(conj_magnitude)
+
+
+    v.append(vectors.Vector3D(1, 0, 0, '$\\nu_e$', plotaura=True))
+    v[3].Rotate(conj_magnitude)
+    v.append(vectors.Vector3D(0, 1, 0, '$\\nu_\\mu$', plotaura=True))
+    v[4].Rotate(conj_magnitude)
+    v.append(vectors.Vector3D(0, 0, 1, '$\\nu_\\tau$', plotaura=True))
+    v[5].Rotate(conj_magnitude)
+
+
+    #perform rotations to find e, mu, tau.
 
     matrix = np.zeros((3, 3))
     matrix[0,0] = 1
@@ -42,8 +68,7 @@ def Plot3D():
     matrix[2,2] = -1
     print(matrix)
 
-    Param = PMNSDefine.MixingParams()
-    matrix2 = Param.PMNS
+
 
     #v.append(vectors.Vector3D(0.3, -0.4, -0.7, 'placeholder', plotaura=True))
     #v.append(vectors.Vector3D(0, 0, 0, 'placeholder', plotaura=True)) #placeholder
@@ -52,13 +77,24 @@ def Plot3D():
     #v[3].TransformY(matrix)
     #v[3].TransformZ(matrix)
 
-    v.append(copy.deepcopy(v[0]))  # TODO: Temp testing, remove.
-    v.append(copy.deepcopy(v[0]))
-    print('v0 before ' + str(v[4].x) + ', ' + str(v[4].y) + ', ' + str(v[4].z))
-    v[4].TransformX(matrix2)
-    v[4].TransformY(matrix2)
-    v[4].TransformZ(matrix2)
-    print('v0 after ' + str(v[4].x) + ', ' + str(v[4].y) + ', ' + str(v[4].z))
+    #v.append(copy.deepcopy(v[0]))  # TODO: Temp testing, remove.
+    #v.append(copy.deepcopy(v[0]))
+    #print('v0 before ' + str(v[4].x) + ', ' + str(v[4].y) + ', ' + str(v[4].z))
+    #print('v3 before ' + str(v[3].x) + ', ' + str(v[3].y) + ', ' + str(v[3].z))
+    ##v[3].TransformX(matrix)
+    ##v[3].TransformY(matrix)
+    ##v[3].TransformZ(matrix)
+    #v[4].TransformX(matrix2)
+    #v[4].TransformY(matrix2)
+    #v[4].TransformZ(matrix2)
+   ## v[5].TransformZ(matrix2)
+   ## v[5].TransformZ(matrix2)
+   ## v[5].TransformZ(matrix2)
+   ## v[6].TransformZ(matrix2)
+   ## v[6].TransformZ(matrix2)
+   ## v[6].TransformZ(matrix2)
+    #print('v0 after ' + str(v[4].x) + ', ' + str(v[4].y) + ', ' + str(v[4].z))
+    #print('v3 after ' + str(v[3].x) + ', ' + str(v[3].y) + ', ' + str(v[3].z))
 
    # for j in range(9):
    #     v.append(vectors.Vector3D(j/10, j/10, j/10)) #placeholder TODO:FIX COLOUR ITERATION.

@@ -4,7 +4,8 @@ class MixingParams:
 
     def __init__(self, inverted=0): 
         self.updatetheta()
-        self.dcp = -1.601
+        #self.dcp = -1.601
+        self.dcp = 0
 
         self.dm21_2 = 7.42 * 10 ** (-5)
         if inverted == 0:
@@ -16,6 +17,9 @@ class MixingParams:
 
         self.PMNS = np.zeros((3, 3), dtype=complex)
         self.setPMNS()
+        self.PMNSConj = self.PMNS.conj().T
+        #self.PMNSNeat = (np.sign(np.real(self.PMNS)) * np.abs(self.PMNS))
+
     def updatetheta(self, theta12 = np.arcsin(np.sqrt(0.307)), theta23 = np.arcsin(np.sqrt(0.561)), theta13 = np.arcsin(np.sqrt(0.022))):
         self.theta12 = theta12
         self.theta23 = theta23
